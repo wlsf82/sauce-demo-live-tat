@@ -16,4 +16,12 @@ describe('Sauce demo', () => {
 
     cy.get('.error-message-container').should('be.visible')
   })
+
+  it('logs in successfully with a problematic user', () => {
+    cy.get('[data-test=username]').type('problem_user')
+    cy.get('[data-test=password]').type('secret_sauce')
+    cy.get('[data-test=login-button]').click()
+
+    cy.contains('.title', 'Products').should('be.visible')
+  })
 })
